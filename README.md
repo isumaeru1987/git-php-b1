@@ -35,7 +35,7 @@ Correction du chemin json
 Boucle des élèves faite
 ```
 
-4. Remplacer :
+4. Remplacer la valeurs en dur :
 - chemin image  
 - alt  
 - `<h3>`  
@@ -74,7 +74,7 @@ Fix des erreurs PHP
 Récupération de l'id
 ```
 
-3. Remplacer :
+3. Remplacer les valeurs en dur :
 - `<title>`
 - image + alt
 - `<h1>`
@@ -135,27 +135,27 @@ Recherche opérationnelle
 
 ---
 
-## 🔹 index.php (/6)
+## 🔹 index.php (/4)
 
 | Critère | Points |
 |--------|--------|
-| Chargement JSON | 1 |
-| Boucle des élèves | 2 |
-| Suppression des valeurs en dur | 2 |
-| Lien vers note.php | 1 |
+| Chargement JSON | 0.5 |
+| Boucle des élèves | 1.5 |
+| Suppression des valeurs en dur | 1.5 |
+| Lien vers note.php | 0.5 |
 
 ---
 
-## 🔹 note.php (/8)
+## 🔹 note.php (/10)
 
 | Critère | Points |
 |--------|--------|
-| Correction des erreurs PHP | 2 |
-| Récupération ID URL | 1 |
-| Affichage infos élève | 2 |
-| Nb matières + nb notes | 1 |
-| Boucle matières + notes | 1 |
-| Moyennes (matière + générale) | 1 |
+| Correction des erreurs PHP | 1 |
+| Récupération ID URL | 0.5 |
+| Affichage infos élève | 1 |
+| Nb matières + nb notes | 1.5 |
+| Boucle matières + notes | 2 |
+| Moyennes (matière + générale) | 4 |
 
 ---
 
@@ -166,7 +166,6 @@ Recherche opérationnelle
 
 # 🧠 Conseils
 
-- Utiliser `json_decode()`
 - Utiliser `foreach`
 - Utiliser `$_GET`
 - Tester régulièrement
