@@ -1,0 +1,60 @@
+{
+  "eleves": [
+    {
+      "id": 12,
+      "nom": "RUIZ",
+      "prenom": "Léa",
+      "classe": "B1",
+      "image": "1767879725968.png",
+      "notes": {
+        "maths": [15, 12, 18],
+        "francais": [14, 16, 13],
+        "histoire": [10, 12, 11],
+        "anglais": [17, 15, 16]
+      },
+      "evaluation_globale": "Très bon trimestre, accrochez sur l'Histoire"
+    },
+    {
+      "id": 5,
+      "nom": "AUDRAN",
+      "prenom": "Soen",
+      "classe": "B1",
+      "image": "1761819583214.jpeg",
+      "notes": {
+        "maths": [18, 17, 19],
+        "francais": [15, 14, 16],
+        "histoire": [13, 15, 14],
+        "anglais": [19, 18, 17]
+      },
+      "evaluation_globale": "Excellent trimestre, félicitations !"
+    },
+    {
+      "id": 1,
+      "nom": "TALBI",
+      "prenom": "Ismaël",
+      "classe": "M2",
+      "image": "1756414360137.jpeg",
+      "notes": {
+        "maths": [9, 11, 10],
+        "francais": [12, 13, 11],
+        "histoire": [14, 13, 12],
+        "anglais": [10, 9, 11]
+      },
+      "evaluation_globale": "Trimestre moyen, poursuivez vos efforts !"
+    },
+    {
+      "id": 99,
+      "nom": "LAVIGNE CHAPPAZ",
+      "prenom": "Florian",
+      "classe": "B3",
+      "image": "1767867006092.png",
+      "notes": {
+        "maths": [16, 15, 17],
+        "francais": [18, 17, 19],
+        "histoire": [15, 14, 16],
+        "anglais": [17, 18, 16]
+      },
+      "evaluation_globale": "Excellent trimestre, en nette progression, félicitations !"
+    }
+  ]
+}

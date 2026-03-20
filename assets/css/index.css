@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat';
+    background: #f6f6f6;
+    color: #222;
+    padding: 60px 24px;
+}
+
+.team-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 60px 70px;
+}
+
+.member-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.10);
+}
+
+.member-photo {
+    width: 180px;
+    height: 180px;
+    min-width: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.member-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    font-family: "Montserrat";
+}
+
+.member-role {
+    color: #c96b6b;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
+}
+
+.member-desc {
+    color: #8a8a8a;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    max-width: 420px;
+}
+
+.social-links {
+    display: flex;
+    gap: 14px;
+}
+
+.social-links a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: #f1f1f1;
+}
+
+.social-links a:hover {
+    background: #222;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.social-links svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.btn-notes {
+  padding: 12px 22px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #c96b6b, #e48a8a);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 15px rgba(201, 107, 107, 0.3);
+}
+
+.btn-notes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(201, 107, 107, 0.4);
+}
+
+.btn-notes:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 900px) {
+    .team-grid {
+    grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .member-card {
+    flex-direction: column;
+    text-align: center;
+    }
+
+    .member-photo {
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    }
+
+    .member-info h3 {
+    font-size: 1.8rem;
+    }
+
+    .social-links {
+    justify-content: center;
+    }
+}
