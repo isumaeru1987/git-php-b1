@@ -8,13 +8,13 @@ $data = json_decode(file_get_contents($filepath), true);
 //var_dump($data); //Affiche le tableau des eleves
 //var_dump($GLOBALS); //Affiche les GET, POST, COOKIE, ...
 
-$eleve = array_filter($data['eleves'], function($student){
+$eleve = current(array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
-    return $student['id'] == 1;
-});
+    return $student['id'] == $_GET['id'];
+}));
 
 ////Pour débugger :
-//var_dump($eleve); //Affiche le tableau de l'élève
+// var_dump($eleve); //Affiche le tableau de l'élève
 
 ?>
 
