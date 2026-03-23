@@ -46,10 +46,12 @@ if( !empty($search) ){
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <form action="" method="post">
-      <input type="search" name="search" />
-      <input type="submit" value="Rechercher" />
-    </form>
+    <div class="search-container">
+      <form action="" method="post">
+        <input type="search" name="search" placeholder="Rechercher un élève..." value="<?= $search ?>" />
+        <button type="submit">Rechercher</button>
+      </form>
+    </div>
 
     <div class="team-grid">
       <?php foreach($eleves as $eleve){ ?>
