@@ -33,6 +33,7 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
 
     <div class="team-grid">
+      <?php foreach($data['eleves'] as $eleve){ ?>
       <article class="member-card">
         <div class="member-photo">
           <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
@@ -48,6 +49,7 @@ $data = json_decode(file_get_contents($filepath), true);
           </div>
         </div>
       </article>
+      <?php } ?>
     </div>
   </section>
 </body>
