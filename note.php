@@ -16,6 +16,16 @@ $eleve = current(array_filter($data['eleves'], function($student){
 ////Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
 
+function calculateNotationTotal(array $notesMatieres): int
+{
+  $total = 0;
+  foreach( $notesMatieres as $notesMatiere ){
+    $total += count($notesMatiere);
+  }
+
+  return $total;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -43,12 +53,12 @@ $eleve = current(array_filter($data['eleves'], function($student){
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?= count($eleve['notes']) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?= calculateNotationTotal($eleve['notes']); ?></div>
           </div>
 
           <div class="summary-box">
