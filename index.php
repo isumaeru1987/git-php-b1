@@ -8,6 +8,27 @@ $data = json_decode(file_get_contents($filepath), true);
 //var_dump($data);
 //var_dump($GLOBALS);
 
+function sanitize(string $str): string
+{
+  return trim(
+    strtolower(
+      $str
+    )
+  );
+}
+
+$eleves = $data['eleves'];
+$search = $_POST['search'] ?? null;
+if( !empty($search) ){
+
+  $eleves = [];
+  foreach($data['eleves'] as $eleve){
+    if( strpos(sanitize($eleve['prenom']), sanitize($search)) !== false ){
+      $eleves[] = $eleve;
+    }
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +46,13 @@ $data = json_decode(file_get_contents($filepath), true);
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <!-- <div class="search-container">
-      <form action="" method="">
-        <input type="" name="" />
-        <button>Rechercher</button>
-      </form>
-    </div> -->
+    <form action="" method="post">
+      <input type="search" name="search" />
+      <input type="submit" value="Rechercher" />
+    </form>
 
     <div class="team-grid">
-      <?php foreach($data['eleves'] as $eleve){ ?>
+      <?php foreach($eleves as $eleve){ ?>
       <article class="member-card">
         <div class="member-photo">
           <img src="assets/images/students/<?= $eleve['image'] ?>" alt="Photo de <?= $eleve['prenom'].' '.$eleve['nom'][0].'.' ?>">
