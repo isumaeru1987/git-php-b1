@@ -82,16 +82,19 @@ function calculateNotationTotal(array $notesMatieres): int
             </tr>
           </thead>
           <tbody id="notes-body">
-            <tr>
-                <td><strong>Maths</strong></td>
-                <td>
-                <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
-                </div>
-                </td>
-                <td class="moyenne-cell">15,00/20</td>
-            </tr>
+            <?php foreach( $eleve['notes'] as $matiere => $notesMatiere ){ ?>
+              <tr>
+                  <td><strong><?= ucfirst($matiere) ?></strong></td>
+                  <td>
+                  <div class="notes-list">
+                      <?php foreach( $notesMatiere as $noteMatiere ){ ?>
+                        <span class="note-badge"><?= $noteMatiere ?>/20</span>
+                      <?php } ?>
+                  </div>
+                  </td>
+                  <td class="moyenne-cell">15,00/20</td>
+              </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
