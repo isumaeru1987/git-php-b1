@@ -25,6 +25,13 @@ $data = json_decode(file_get_contents($filepath), true);
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
+    <!-- <div class="search-container">
+      <form action="" method="">
+        <input type="" name="" />
+        <button>Rechercher</button>
+      </form>
+    </div> -->
+
     <div class="team-grid">
       <article class="member-card">
         <div class="member-photo">

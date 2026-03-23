@@ -120,6 +120,13 @@ YATA :)
 Recherche opérationnelle
 ```
 
+3. Conserver la valeur de la saisie dans l'input de recherche après la soumission du formulaire
+
+✅ Commit :
+```
+Final boss
+```
+
 ---
 
 # 🧮 Grille de notation (/20)
@@ -161,6 +168,7 @@ Recherche opérationnelle
 
 ## 🎁 BONUS
 +2 points : recherche fonctionnelle
++0.5 point : garder la valeur de la recherche
 
 ---
 
