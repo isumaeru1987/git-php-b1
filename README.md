@@ -105,7 +105,7 @@ Toutes les notes de toutes les matières s'affiche
 
 ✅ Commit :
 ```
-YATA !!!
+YATA :)
 ```
 
 ---
