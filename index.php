@@ -36,13 +36,13 @@ $data = json_decode(file_get_contents($filepath), true);
       <?php foreach($data['eleves'] as $eleve){ ?>
       <article class="member-card">
         <div class="member-photo">
-          <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
+          <img src="assets/images/students/<?= $eleve['image'] ?>" alt="Photo de <?= $eleve['prenom'].' '.$eleve['nom'][0].'.' ?>">
         </div>
         <div class="member-info">
-          <h3><?= "John D." ?></h3>
-          <div class="member-role"><?= "B1" ?></div>
+          <h3><?= $eleve['prenom'].' '.$eleve['nom'][0].'.' ?></h3>
+          <div class="member-role"><?= $eleve['classe'] ?></div>
           <p class="member-desc">
-            <?= "Appréciation globale" ?>
+            <?= $eleve['evaluation_globale'] ?>
           </p>
           <div>
             <button class="btn-notes">Voir les notes</button>
