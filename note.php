@@ -26,6 +26,26 @@ function calculateNotationTotal(array $notesMatieres): int
   return $total;
 }
 
+function calculateAverageNotation(array $notesMatiere): float
+{
+  $totalNotes = 0;
+  foreach( $notesMatiere as $noteMatiere ){
+    $totalNotes += $noteMatiere;
+  }
+
+  return round($totalNotes/count($notesMatiere), 2);
+}
+
+function calculateGlobalAverageNotation(array $notesMatieres): float
+{
+  $totalMoyennes = 0;
+  foreach( $notesMatieres as $notesMatiere ){
+    $totalMoyennes += calculateAverageNotation($notesMatiere);
+  }
+
+  return round($totalMoyennes/count($notesMatieres), 2);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +83,7 @@ function calculateNotationTotal(array $notesMatieres): int
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?= str_replace('.', ',', calculateGlobalAverageNotation($eleve['notes'])) ?></div>
           </div>
         </div>
       </div>
@@ -92,7 +112,7 @@ function calculateNotationTotal(array $notesMatieres): int
                       <?php } ?>
                   </div>
                   </td>
-                  <td class="moyenne-cell">15,00/20</td>
+                  <td class="moyenne-cell"><?= calculateAverageNotation($notesMatiere) ?>/20</td>
               </tr>
             <?php } ?>
           </tbody>
@@ -102,7 +122,7 @@ function calculateNotationTotal(array $notesMatieres): int
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?= number_format(calculateGlobalAverageNotation($eleve['notes']), 2, ',', ' ') ?>/20</div>
         </div>
       </div>
     </section>
