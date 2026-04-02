@@ -5,8 +5,8 @@ $filepath = 'data\students.json';
 $data = json_decode(file_get_contents($filepath), true);
 
 ////Pour débugger :
-//var_dump($data); //Affiche le tableau des eleves
-//var_dump($GLOBALS); //Affiche les GET, POST, COOKIE, ...
+// var_dump($data); //Affiche le tableau des eleves
+// var_dump($GLOBALS); //Affiche les GET, POST, COOKIE, ...
 
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
@@ -27,18 +27,18 @@ $eleve = array_filter($data['eleves'], function($student){
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= "John D." ?></title>
+  <title><?= $eleve[array_key_first($eleve)]["nom"] . " " . $eleve[array_key_first($eleve)]["prenom"] ?></title>
 </head>
 <body>
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="" alt="Photo de John Doe">
+        <img src="assets\images\students\<?php echo $eleve[array_key_first($eleve)]["image"]?>" alt="Photo de <?php echo $eleve[array_key_first($eleve)]["nom"] . " " . $eleve[array_key_first($eleve)]["prenom"]?>">
       </div>
 
       <div class="student-info">
-        <h1>John Doe</h1>
-        <div class="student-class">B1</div>
+        <h1><?php echo $eleve[array_key_first($eleve)]["nom"] . " " . $eleve[array_key_first($eleve)]["prenom"]?></h1>
+        <div class="student-class"><?php echo $eleve[array_key_first($eleve)]["classe"]?></div>
 
         <div class="student-summary">
           <div class="summary-box">
