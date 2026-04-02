@@ -15,14 +15,17 @@ $eleve = array_filter($data['eleves'], function($student){
 
 ////Pour débugger :
 $firstKey = array_key_first($eleve);
-var_dump($eleve[$firstKey]["notes"]["maths"]); //Affiche le tableau de l'élève
+//var_dump($eleve[$firstKey]["notes"]["maths"]); //Affiche le tableau de l'élève
 
 $nb_note = 0;
+$somme_note = 0;
 foreach($eleve[$firstKey]["notes"] as $note){
   foreach($note as $nb){
+    $somme_note += $nb;
     $nb_note+=1;
   }
 };
+
 
 ?>
 
@@ -90,7 +93,7 @@ foreach($eleve[$firstKey]["notes"] as $note){
                     <?php endforeach; ?>
                   </div>
                   </td>
-                  <td class="moyenne-cell">15,00/20</td>
+                  <td class="moyenne-cell"><?php echo array_sum($note)/count($note) ?></td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -100,7 +103,7 @@ foreach($eleve[$firstKey]["notes"] as $note){
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?php echo $somme_note/$nb_note ?></div>
         </div>
       </div>
     </section>
