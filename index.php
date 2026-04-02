@@ -36,10 +36,10 @@ $data = json_decode(file_get_contents($filepath), true);
       <?php foreach ($data["eleves"] as $eleve) { ?>
         <article class="member-card">
           <div class="member-photo">
-            <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?= $eleve["nom"]; ?> <?= $eleve["prenom"]; ?>">
+            <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?= $eleve["prenom"]; ?> <?= $eleve["nom"][0]; ?>.">
           </div>
           <div class="member-info">
-            <h3><?= $eleve["nom"]; ?> <?= $eleve["prenom"]; ?></h3>
+            <h3><?= $eleve["prenom"]; ?>  <?= $eleve["nom"][0]; ?>.</h3>
             <div class="member-role"><?= $eleve["classe"]; ?></div>
               <p class="member-desc">
                 <?= $eleve["evaluation_globale"]; ?>
@@ -49,8 +49,8 @@ $data = json_decode(file_get_contents($filepath), true);
             </div>
           </div>
         </article>
-    </div>
       <?php } ?>
+    </div>
   </section>
 </body>
 </html>
