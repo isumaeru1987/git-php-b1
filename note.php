@@ -14,7 +14,9 @@ $eleve = array_filter($data['eleves'], function($student){
 });
 
 ////Pour débugger :
-var_dump($eleve); //Affiche le tableau de l'élève
+$firstKey = array_key_first($eleve);
+//var_dump($eleve); //Affiche le tableau de l'élève
+
 
 ?>
 
@@ -27,18 +29,18 @@ var_dump($eleve); //Affiche le tableau de l'élève
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= "John Doe" ?></title>
+  <title><?= $eleve[$firstKey]["nom"].' '. $eleve[$firstKey]["prenom"]?></title>
 </head>
 <body>
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="" alt="Photo de John Doe">
+        <img src="assets/images/students/<?=$eleve[$firstKey]["image"]?>" alt="Photo de <?= $eleve[$firstKey]["nom"].' '. $eleve[$firstKey]["prenom"]?>">
       </div>
 
       <div class="student-info">
-        <h1>John Doe</h1>
-        <div class="student-class">B1</div>
+        <h1><?= $eleve[$firstKey]["nom"].' '. $eleve[$firstKey]["prenom"]?></h1>
+        <div class="student-class"><?= $eleve[$firstKey]["classe"] ?></div>
 
         <div class="student-summary">
           <div class="summary-box">
