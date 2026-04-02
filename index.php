@@ -8,6 +8,15 @@ $data = json_decode(file_get_contents($filepath), true);
 // var_dump($data);
 //var_dump($GLOBALS);
 
+$eleves_a_afficher = $data['eleves'];
+if (!empty(trim($_POST['prenom']))) {
+    $recherche = mb_strtolower(trim($_POST['prenom']));
+
+    $eleves_a_afficher = array_filter($data['eleves'], function($eleve) use ($recherche) {
+        $prenom_eleve = mb_strtolower($eleve['prenom']);
+        return str_contains($prenom_eleve, $recherche);
+    });
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +34,12 @@ $data = json_decode(file_get_contents($filepath), true);
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <!-- <div class="search-container">
-      <form action="" method="">
-        <input type="" name="" />
+    <div class="search-container">
+      <form action="index.php" method="post">
+        <input type="text" name="prenom" />
         <button>Rechercher</button>
       </form>
-    </div> -->
+    </div>
 
     <div class="team-grid">
       <?php foreach($data['eleves'] as $eleve) { ?>
