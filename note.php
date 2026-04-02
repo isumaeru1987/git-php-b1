@@ -13,11 +13,21 @@ $eleve = array_filter($data['eleves'], function($student){
     return $student['id'] == $_GET['id'];
 });
 $infoEleve = reset($eleve);
-////Pour débugger :
+
+//Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
 
-?>
+$nbMatieres = count($infoEleve['notes']);
+$totalNotesCount = 0;
+$sommeToutesNotes = 0;
 
+foreach ($infoEleve['notes'] as $matiere => $listeNotes) {
+    $totalNotesCount += count($listeNotes);
+    $sommeToutesNotes += array_sum($listeNotes);
+}
+
+$moyenneGenerale = $totalNotesCount > 0 ? $sommeToutesNotes / $totalNotesCount : 0;
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -33,27 +43,27 @@ $infoEleve = reset($eleve);
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="assets/images/students/<?= htmlspecialchars($infoEleve['image']) ?>" alt="Photo de John Doe">
+        <img src="assets/images/students/<?= htmlspecialchars($infoEleve['image']) ?>" alt="Photo de <?= htmlspecialchars($infoEleve['prenom'])." ".htmlspecialchars($infoEleve['nom']) ?>">
       </div>
 
       <div class="student-info">
-        <h1><?= htmlspecialchars($infoEleve['prenom'])." ".htmlspecialchars($infoEleve['nom']) ?></h1>
-        <div class="student-class"><?= htmlspecialchars($infoEleve['classe']) ?></div>
+          <h1><?= htmlspecialchars($infoEleve['prenom'])." ".htmlspecialchars($infoEleve['nom']) ?></h1>
+          <div class="student-class"><?= htmlspecialchars($infoEleve['classe']) ?></div>
 
-        <div class="student-summary">
-          <div class="summary-box">
-            <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+          <div class="student-summary">
+            <div class="summary-box">
+              <div class="summary-label">Nombre de matières</div>
+              <div class="summary-value" id="nb-matieres"><?= htmlspecialchars($nbMatieres) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?= htmlspecialchars($totalNotesCount) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?= htmlspecialchars($moyenneGenerale) ?></div>
           </div>
         </div>
       </div>
