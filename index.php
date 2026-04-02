@@ -3,7 +3,11 @@
 //Récupération du fichier JSON et conversion en tableau PHP
 $filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
-
+if (isset($_POST["nom"])) {
+  $recherche = $_POST["nom"];
+} else {
+  $recherche = "";
+}
 ////Pour débugger :
 // var_dump($data);
 //var_dump($GLOBALS);
@@ -29,47 +33,34 @@ $data = json_decode(file_get_contents($filepath), true);
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <!-- <div class="search-container">
-      <form action="" method="">
-        <input type="" name="" />
-        <button>Rechercher</button>
+    <div class="search-container">
+      <form action="" method="post">
+        <input type="text" name="nom" value="<?= htmlspecialchars(trim($_POST["nom"]))?>"/>
+        <button type="submit">Rechercher</button>
       </form>
-    </div> -->
-
+    </div>
     <div class="team-grid">
-      <!-- <article class="member-card">
-        <div class="member-photo">
-          <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
-        </div>
-        <div class="member-info">
-          <h3><?= "John D." ?></h3>
-          <div class="member-role"><?= "B1" ?></div>
-          <p class="member-desc">
-            <?= "Appréciation globale" ?>
-          </p>
-          <div>
-            <button class="btn-notes">Voir les notes</button>
-          </div>
-        </div>
-      </article> -->
       <?php foreach ($data as $Ttableau) { ?>
         <?php foreach ($Ttableau as $value) { ?>
-          <article class="member-card">
-            <div class="member-photo">
-              <img src="assets/images/students/<?= $value["image"] ?>"
-                alt="Photo de <?= $value["nom"] . "." . $value["prenom"] ?>">
-            </div>
-            <div class="member-info">
-              <h3><?= $value["nom"] . "." . $value["prenom"] ?></h3>
-              <div class="member-role"><?= $value["classe"] ?></div>
-              <p class="member-desc">
-                <?= $value["evaluation_globale"] ?>
-              </p>
-              <div>
-                <a href="note.php?id=<?= $value["id"] ?>"><button class="btn-notes">Voir les notes</button></a>
+          <?php if (strpos(strtolower($value["prenom"]), strtolower($recherche)) !== false or $recherche == "") { ?>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="assets/images/students/<?= $value["image"] ?>"
+                  alt="Photo de <?= $value["nom"] . "." . $value["prenom"] ?>">
               </div>
-            </div>
-          </article>
+              <div class="member-info">
+                <h3><?= $value["nom"] . "." . $value["prenom"] ?></h3>
+                <div class="member-role"><?= $value["classe"] ?></div>
+                <p class="member-desc">
+                  <?= $value["evaluation_globale"] ?>
+                </p>
+                <div>
+                  <a href="note.php?id=<?= $value["id"] ?>"><button class="btn-notes">Voir les notes</button></a>
+                </div>
+              </div>
+            </article>
+          <?php } ?>
+
         <?php } ?>
       <?php } ?>
     </div>
