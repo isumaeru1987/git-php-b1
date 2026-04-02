@@ -44,12 +44,12 @@ $eleve = array_filter($data['eleves'], function($student){
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?= count($infos['notes']) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?= array_sum(array_map('count', $infos['notes'])) ?></div>
           </div>
 
           <div class="summary-box">
