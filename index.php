@@ -32,26 +32,24 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
     
     <div class="team-grid">
-      <?php foreach ($data as $liste): ?>
-      <?php foreach ($liste as $eleves => $eleve): ?>
-      <article class="member-card">
-        <div class="member-photo">
-          <img src="assets/images/students/<?= htmlspecialchars($eleve['image'])?>" alt="Photo de <?= htmlspecialchars($eleve['prenom']) . ' ' . htmlspecialchars($eleve['nom']) ?>">
-        </div>
-        <div class="member-info">
-          <h3><?= htmlspecialchars($eleve['prenom']) . ' ' . substr(htmlspecialchars($eleve['nom']), 0, 1) ?>.</h3>
-          <div class="member-role"><?= htmlspecialchars($eleve['classe'])?></div>
-          <p class="member-desc">
-            <?= htmlspecialchars($eleve['evaluation_globale'])?>
-          </p>
-          <div>
-            <!-- redirection vers la pages des notes -->
-            <button class="btn-notes" onclick="window.location.href='note.php?id=<?= htmlspecialchars($eleve['id'])?>'">Voir les notes</button>
-          </div>
-        </div>
-      </article>
-      <?php endforeach; ?>
-      <?php endforeach; ?>
+      <?php foreach ($data['eleves'] as $eleve){ ?>
+          <article class="member-card">
+            <div class="member-photo">
+              <img src="assets/images/students/<?= htmlspecialchars($eleve['image'])?>" alt="Photo de <?= htmlspecialchars($eleve['prenom']) . ' ' . htmlspecialchars($eleve['nom']) ?>">
+            </div>
+            <div class="member-info">
+              <h3><?= htmlspecialchars($eleve['prenom']) . ' ' . substr(htmlspecialchars($eleve['nom']), 0, 1) ?>.</h3>
+              <div class="member-role"><?= htmlspecialchars($eleve['classe'])?></div>
+              <p class="member-desc">
+                <?= htmlspecialchars($eleve['evaluation_globale'])?>
+              </p>
+              <div>
+                <!-- redirection vers la pages des notes -->
+                <button class="btn-notes" onclick="window.location.href='note.php?id=<?= htmlspecialchars($eleve['id'])?>'">Voir les notes</button>
+              </div>
+            </div>
+          </article>
+      <?php } ?>
     </div>
   </section>
 </body>
