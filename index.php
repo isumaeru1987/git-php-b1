@@ -45,9 +45,11 @@ var_dump($data);
               <p class="member-desc">
                 <?= $infos["evaluation_globale"] ?>
               </p>
-              <div>
-                <button class="btn-notes">Voir les notes</button>
-              </div>
+              <a href="note.php?id=<?= $infos["id"] ?>">
+                <div>
+                  <button class="btn-notes">Voir les notes</button>
+                </div>
+              </a>
             </div>
           </article>
         <?php endforeach; ?>
