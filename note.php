@@ -17,7 +17,6 @@ $eleve = array_filter($data['eleves'], function($student){
 //var_dump($eleve); //Affiche le tableau de l'élève
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
