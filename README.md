@@ -129,45 +129,51 @@ Final boss
 
 ---
 
-# 🧮 Grille de notation (/20)
+# 🧮 Grille de notation (17.5/20)
 
-## 🔹 Git & méthode (/6)
+## 🔹 Git & méthode (6/6)
 
 | Critère | Points |
 |--------|--------|
-| Branche créée correctement | 1 |
-| Commits présents et bien nommés | 3 |
-| Push sur dépôt distant | 1 |
-| Respect des étapes demandées | 1 |
+| Branche créée correctement | 1/1 |
+| Commits présents et bien nommés | 3/3 |
+| Push sur dépôt distant | 1/1 |
+| Respect des étapes demandées | 1/1 |
 
 ---
 
-## 🔹 index.php (/4)
+## 🔹 index.php (3.5/4)
 
 | Critère | Points |
 |--------|--------|
-| Chargement JSON | 0.5 |
-| Boucle des élèves | 1.5 |
-| Suppression des valeurs en dur | 1.5 |
-| Lien vers note.php | 0.5 |
+| Chargement JSON | 0.5/0.5 |
+| Boucle des élèves | 1.5/1.5 |
+| Suppression des valeurs en dur | 1/1.5 |
+==> L'ordre prénom nom est inversé, il fallait également n'afficher que la première lettre du nom de famille
+| Lien vers note.php | 0.5/0.5 |
 
 ---
 
-## 🔹 note.php (/10)
+## 🔹 note.php (7/10)
 
 | Critère | Points |
 |--------|--------|
-| Correction des erreurs PHP | 1 |
-| Récupération ID URL | 0.5 |
-| Affichage infos élève | 1 |
-| Nb matières + nb notes | 1.5 |
-| Boucle matières + notes | 2 |
-| Moyennes (matière + générale) | 4 |
-
+| Correction des erreurs PHP | 0/1 |
+==> tu as include le fichier index.php, au lieu de prendre la variable $filepath, c'est ce qui engendrait ton problème avec le title
+| Récupération ID URL | 0.5/0.5 |
+| Affichage infos élève | 0.5/1 |
+==> Ordre et typo sur nom et prénom, balise h1 mal fermé
+| Nb matières + nb notes | 1/1.5 |
+==> A éviter le traitement directement dans l'HTML, privilégié une fonction qui retourne le résultat
+| Boucle matières + notes | 1.5/2 |
+==> Attention au nommage, privilégier $matiere ou $subject plutôt que $key, idem pour $value
+| Moyennes (matière + générale) | 3.5/4 |
+==> A éviter le traitement directement dans l'HTML, privilégié une fonction qui retourne le résultat
 ---
 
 ## 🎁 BONUS
 +2 points : recherche fonctionnelle
+==> 1 (privilégié les trim en cas d'erreur de saisie sur les espaces, erreur au chargement si pas de recherche faite)
 +0.5 point : garder la valeur de la recherche
 
 ---

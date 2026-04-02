@@ -35,7 +35,7 @@ if (isset($_POST["nom"])) {
 
     <div class="search-container">
       <form action="" method="post">
-        <input type="text" name="nom" value="<?= htmlspecialchars(trim($_POST["nom"]))?>"/>
+        <input type="text" name="nom" value="<?= htmlspecialchars(trim($_POST["nom"] ?? ""))?>"/>
         <button type="submit">Rechercher</button>
       </form>
     </div>
