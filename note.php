@@ -16,7 +16,15 @@ $eleve = array_filter($data['eleves'], function($student){
 ////Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
 
-$moyenne_generale = 0;
+$moyenne = 0;
+foreach($eleve[array_key_first($eleve)]['notes'] as $notes){
+  // print_r($notes);
+  foreach($notes as $note) {
+    $moyenne += $note;
+  };
+};
+echo $moyenne;
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +70,7 @@ $moyenne_generale = 0;
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top"><?php echo $moyenne_generale?></div>
+            <div class="summary-value" id="moyenne-generale-top"><?php echo round($moyenne/$number_notes,2)?></div>
           </div>
         </div>
       </div>
@@ -81,6 +89,7 @@ $moyenne_generale = 0;
             </tr>
           </thead>
           <tbody id="notes-body">
+            <?php $moyenne_generale = 0;?>
             <?php foreach($eleve[array_key_first($eleve)]['notes'] as $notes){ 
               $moyenne_matiere = 0?>
               <tr>
