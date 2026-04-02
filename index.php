@@ -5,7 +5,7 @@ $filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
 
 ////Pour débugger :
-var_dump($data);
+// var_dump($data);
 //var_dump($GLOBALS);
 
 ?>
