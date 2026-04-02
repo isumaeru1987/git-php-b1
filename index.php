@@ -48,7 +48,7 @@ function clean($value) : string {
             <h3><?=clean($calling)?></h3>
             <div class="member-role"><?= clean($eleve["classe"]) ?></div>
             <p class="member-desc">
-              <?= clean($eleve["evaluation_globale"]) ?>
+              <?=clean($eleve["evaluation_globale"])?>
             </p>
             <div>
               <button class="btn-notes">Voir les notes</button>
