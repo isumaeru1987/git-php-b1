@@ -36,7 +36,7 @@ if ($isSearch) {
 
     <div class="search-container">
       <form action="" method="">
-        <input type="text" name="search"/>
+        <input type="text" name="search" value="<?=$search?>"/>
         <button>Rechercher</button>
       </form>
       <?php if ($isSearch) : ?> <h2>Trouvé pour "<b><?=$search?></b>"</h2> <?php endif;?>
