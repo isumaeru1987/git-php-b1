@@ -8,7 +8,7 @@ $data = json_decode(file_get_contents('data/students.json'), true);
 
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
-    return $student['id'] == 1;
+    return $student['id'] == $_GET['id'];
 });
 
 ////Pour débugger :
