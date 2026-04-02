@@ -12,15 +12,18 @@ $eleve = array_filter($data['eleves'], function($student){
 });
 
 ////Pour débugger :
-var_dump($eleve); //Affiche le tableau de l'élève
+// var_dump($eleve); //Affiche le tableau de l'élève
 $eleves = $eleve[2];
 
 $matieres = $eleves['notes'];
 
+var_dump($matieres);
+
 foreach ($matieres as $notes) {
-  $notes = count($notes);
-  $totalNombreNotes = count($matieres) * $notes;
+  $note = count($notes);
+  $totalNombreNotes = count($matieres) * $note;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,7 @@ foreach ($matieres as $notes) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= $eleves['prenom'].''.$eleves['nom']; ?></title>
+  <title><?= $eleves['prenom'].' '.$eleves['nom']; ?></title>
 </head>
 <body>
   <div class="page">
@@ -42,7 +45,7 @@ foreach ($matieres as $notes) {
       </div>
 
       <div class="student-info">
-        <h1><?= $eleves['prenom'].''.$eleves['nom']; ?></h1>
+        <h1><?= $eleves['prenom'].' '.$eleves['nom']; ?></h1>
         <div class="student-class"><?= $eleves['classe']; ?></div>
 
         <div class="student-summary">
@@ -58,7 +61,7 @@ foreach ($matieres as $notes) {
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"></div>
           </div>
         </div>
       </div>
@@ -77,16 +80,19 @@ foreach ($matieres as $notes) {
             </tr>
           </thead>
           <tbody id="notes-body">
+            <?php foreach ($matieres as $matiere) {?>
             <tr>
-                <td><strong>Maths</strong></td>
+                <td><strong><?php echo($matiere); ?></strong></td>
+                 <?php foreach ($notesMatieres as $noteMatiere) {?>
                 <td>
                 <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
+                    <span class="note-badge"><?php echo $noteMatiere; ?></span>
                 </div>
                 </td>
+                <?php } ?>
                 <td class="moyenne-cell">15,00/20</td>
             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </div>
