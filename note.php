@@ -80,12 +80,17 @@ $eleve = array_filter($data['eleves'], function($student){
                 <td><strong><?= htmlspecialchars(ucfirst($matieres)) ?></strong></td>
                 <td>
                 <div class="notes-list">
-                    <?php foreach ($notes as $note): ?>
+                    <?php foreach ($notes as $note): 
+                      $somme_des_notes = 0;
+                      $somme_des_notes += array_sum($notes);
+                      $moyenne_matiere = $somme_des_notes / count($notes);
+                      // c'est par là le probleme !!!!
+                    ?>
                     <span class="note-badge"><?= htmlspecialchars($note) ?>/20</span>
                     <? endforeach ?>
                 </div>
                 </td>
-                <td class="moyenne-cell">15,00/20</td>
+                <td class="moyenne-cell"><?= substr(htmlspecialchars($moyenne_matiere), 0, 5) ?>/20</td>
             </tr>
           <? endforeach ?>
           <? endforeach ?>
@@ -96,7 +101,10 @@ $eleve = array_filter($data['eleves'], function($student){
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <?php foreach ($eleve as $infos): ?>
+          <?php $moyenne_generale = $moyenne_matiere / count($infos['notes']) ?>
+          <div class="value" id="moyenne-generale-bottom"><?= substr(htmlspecialchars($moyenne_generale)) ?>/20</div>
+          <? endforeach ?>
         </div>
       </div>
     </section>
