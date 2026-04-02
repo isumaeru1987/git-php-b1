@@ -15,6 +15,12 @@ $eleve = array_filter($data['eleves'], function($student){
 var_dump($eleve); //Affiche le tableau de l'élève
 $eleves = $eleve[2];
 
+$matieres = $eleves['notes'];
+
+foreach ($matieres as $notes) {
+  $notes = count($notes);
+  $totalNombreNotes = count($matieres) * $notes;
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,12 +48,12 @@ $eleves = $eleve[2];
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?php echo count($matieres); ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?php echo $totalNombreNotes; ?></div>
           </div>
 
           <div class="summary-box">
