@@ -45,7 +45,7 @@ $data = json_decode(file_get_contents($filepath), true);
                 <?= $eleve["evaluation_globale"]; ?>
               </p>
             <div>
-            <button class="btn-notes" onclick="window.open('note.php?id=<?=$eleve['id']?>')">Voir les notes</button>
+            <button class="btn-notes" onclick="window.open('note.php?id=<?=$eleve['id']?>')"  >Voir les notes</button>
             </div>
           </div>
         </article>
