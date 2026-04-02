@@ -15,8 +15,14 @@ $eleve = array_filter($data['eleves'], function($student){
 
 ////Pour débugger :
 $firstKey = array_key_first($eleve);
-//var_dump($eleve); //Affiche le tableau de l'élève
+var_dump($eleve[$firstKey]["notes"]["maths"]); //Affiche le tableau de l'élève
 
+$nb_note = 0;
+foreach($eleve[$firstKey]["notes"] as $note){
+  foreach($note as $nb){
+    $nb_note+=1;
+  }
+};
 
 ?>
 
@@ -45,12 +51,12 @@ $firstKey = array_key_first($eleve);
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?=count($eleve[$firstKey]["notes"]) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?= $nb_note ?></div>
           </div>
 
           <div class="summary-box">
@@ -74,16 +80,19 @@ $firstKey = array_key_first($eleve);
             </tr>
           </thead>
           <tbody id="notes-body">
-            <tr>
-                <td><strong>Maths</strong></td>
-                <td>
-                <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
-                </div>
-                </td>
-                <td class="moyenne-cell">15,00/20</td>
-            </tr>
+            <?php foreach($eleve[$firstKey]["notes"] as $note): ?>
+              <?php var_dump($note) ?>
+              <tr>
+                  <td><strong><?= key($note) ?></strong></td>
+                  <td>
+                  <div class="notes-list">
+                      <span class="note-badge">14/20</span>
+                      <span class="note-badge">16/20</span>
+                  </div>
+                  </td>
+                  <td class="moyenne-cell">15,00/20</td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
