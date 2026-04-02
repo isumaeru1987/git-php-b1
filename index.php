@@ -6,12 +6,11 @@ $data = json_decode(file_get_contents($filepath), true);
 
 //Pour débugger :
 // var_dump($data);
-//var_dump($GLOBALS);
+// var_dump($GLOBALS);
 
-$eleves_a_afficher = $data['eleves'];
-if (!empty(trim($_POST['prenom']))) {
+$eleves_a_afficher = $data['eleves'] ?? []; 
+if (isset($_POST['prenom'])) {
     $recherche = mb_strtolower(trim($_POST['prenom']));
-
     $eleves_a_afficher = array_filter($data['eleves'], function($eleve) use ($recherche) {
         $prenom_eleve = mb_strtolower($eleve['prenom']);
         return str_contains($prenom_eleve, $recherche);
@@ -36,13 +35,13 @@ if (!empty(trim($_POST['prenom']))) {
 
     <div class="search-container">
       <form action="index.php" method="post">
-        <input type="text" name="prenom" />
-        <button>Rechercher</button>
+        <input type="text" name="prenom" value="<?= htmlspecialchars($_POST['prenom'] ?? '') ?>" />
+        <button type="submit">Rechercher</button>
       </form>
     </div>
 
     <div class="team-grid">
-      <?php foreach($data['eleves'] as $eleve) { ?>
+      <?php foreach($eleves_a_afficher as $eleve) { ?>
         <article class="member-card">
           <div class="member-photo">
             <img src="assets/images/students/<?= htmlspecialchars($eleve['image']) ?>" alt="Photo de <?= htmlspecialchars($eleve['prenom'])." ".substr(htmlspecialchars($eleve['nom']), 0, 1)."."; ?>">
