@@ -37,7 +37,7 @@ $data = json_decode(file_get_contents($filepath), true);
     foreach ($data as $eleves) { ?>
       <article class="member-card">
         <div class="member-photo">
-          <img src="<?= $eleves['image'] ?>" alt="Photo de <?= $eleves['prenom'].''.$eleves['nom'] ?>">
+          <img src="assets/images/students/<?= $eleves['image'] ?>" alt="Photo de <?= $eleves['prenom'].''.$eleves['nom'] ?>">
         </div>
         <div class="member-info">
           <h3><?= $eleves['prenom'].''.$eleves['nom']; ?></h3>
