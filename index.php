@@ -8,6 +8,10 @@ $data = json_decode(file_get_contents($filepath), true);
 //var_dump($data);
 //var_dump($GLOBALS);
 
+function clean($value) : string {
+  return htmlspecialchars(trim($value));
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,21 +37,25 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
 
     <div class="team-grid">
-      <article class="member-card">
-        <div class="member-photo">
-          <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
-        </div>
-        <div class="member-info">
-          <h3><?= "John D." ?></h3>
-          <div class="member-role"><?= "B1" ?></div>
-          <p class="member-desc">
-            <?= "Appréciation globale" ?>
-          </p>
-          <div>
-            <button class="btn-notes">Voir les notes</button>
+      <?php foreach ($data["eleves"] as $eleve) {
+        $calling = clean($eleve["prenom"]) . " " . strtoupper(clean($eleve["nom"][0])) .".";
+        ?>
+        <article class="member-card">
+          <div class="member-photo">
+            <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?=clean($calling)?>">
           </div>
-        </div>
-      </article>
+          <div class="member-info">
+            <h3><?=clean($calling)?></h3>
+            <div class="member-role"><?= clean($eleve["classe"]) ?></div>
+            <p class="member-desc">
+              <?= clean($eleve["evaluation_globale"]) ?>
+            </p>
+            <div>
+              <button class="btn-notes">Voir les notes</button>
+            </div>
+          </div>
+        </article>
+      <?php } ?>
     </div>
   </section>
 </body>
