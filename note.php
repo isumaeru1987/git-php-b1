@@ -6,22 +6,19 @@ $data = json_decode(file_get_contents('data/students.json'), true);
 //var_dump($data); //Affiche le tableau des eleves
 //var_dump($GLOBALS); //Affiche les GET, POST, COOKIE, ...
 
-$eleve = array_filter($data['eleves'], function($student){
+$eleve = current(array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
     return $student['id'] == $_GET['id'];
-});
+}));
 
 ////Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
-$eleves = $eleve[2];
 
-$matieres = $eleves['notes'];
+$notesMatieres = $eleve['notes'];
 
-var_dump($matieres);
-
-foreach ($matieres as $notes) {
+foreach ($notesMatieres as $matiere => $notes) {
   $note = count($notes);
-  $totalNombreNotes = count($matieres) * $note;
+  $totalNombreNotes = count($notesMatieres) * $note;
 }
 
 ?>
@@ -35,23 +32,23 @@ foreach ($matieres as $notes) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= $eleves['prenom'].' '.$eleves['nom']; ?></title>
+  <title><?= $eleve['prenom'].' '.$eleve['nom']; ?></title>
 </head>
 <body>
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="assets/images/students/<?= $eleves['image'] ?>" alt="<?= $eleves['prenom'].''.$eleves['nom'] ?>">
+        <img src="assets/images/students/<?= $eleve['image'] ?>" alt="<?= $eleve['prenom'].''.$eleve['nom'] ?>">
       </div>
 
       <div class="student-info">
-        <h1><?= $eleves['prenom'].' '.$eleves['nom']; ?></h1>
-        <div class="student-class"><?= $eleves['classe']; ?></div>
+        <h1><?= $eleve['prenom'].' '.$eleve['nom']; ?></h1>
+        <div class="student-class"><?= $eleve['classe']; ?></div>
 
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres"><?php echo count($matieres); ?></div>
+            <div class="summary-value" id="nb-matieres"><?php echo count($notesMatieres); ?></div>
           </div>
 
           <div class="summary-box">
@@ -80,16 +77,16 @@ foreach ($matieres as $notes) {
             </tr>
           </thead>
           <tbody id="notes-body">
-            <?php foreach ($matieres as $matiere) {?>
+            <?php foreach ($notesMatieres as $matiere => $notes) {?>
             <tr>
                 <td><strong><?php echo($matiere); ?></strong></td>
-                 <?php foreach ($notesMatieres as $noteMatiere) {?>
                 <td>
-                <div class="notes-list">
-                    <span class="note-badge"><?php echo $noteMatiere; ?></span>
-                </div>
+                  <div class="notes-list">
+                      <?php foreach ($notes as $note) {?>
+                        <span class="note-badge"><?php echo $note; ?>/20</span>
+                      <?php } ?>
+                  </div>
                 </td>
-                <?php } ?>
                 <td class="moyenne-cell">15,00/20</td>
             </tr>
             <?php } ?>

@@ -33,24 +33,23 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
 
     <div class="team-grid">
-    <?php $data = $data['eleves'];
-    foreach ($data as $eleves) { ?>
-      <article class="member-card">
-        <div class="member-photo">
-          <img src="assets/images/students/<?= $eleves['image'] ?>" alt="Photo de <?= $eleves['prenom'].''.$eleves['nom'] ?>">
-        </div>
-        <div class="member-info">
-          <h3><?= $eleves['prenom'].''.$eleves['nom']; ?></h3>
-          <div class="member-role"><?= $eleves['classe']; ?></div>
-          <p class="member-desc">
-            <?= $eleves['evaluation_globale']; ?>
-          </p>
-          <div>
-            <a class="btn-notes" href="note.php?id=<?= $eleves['id'];?>">Voir les notes</a>
+      <?php foreach ($data['eleves'] as $eleve) { ?>
+        <article class="member-card">
+          <div class="member-photo">
+            <img src="assets/images/students/<?= $eleve['image'] ?>" alt="Photo de <?= $eleve['prenom'].' '.$eleve['nom'][0].'.' ?>">
           </div>
-        </div>
-      </article>
-<?php } ?>
+          <div class="member-info">
+            <h3><?= $eleve['prenom'].' '.$eleve['nom'][0].'.'; ?></h3>
+            <div class="member-role"><?= $eleve['classe']; ?></div>
+            <p class="member-desc">
+              <?= $eleve['evaluation_globale']; ?>
+            </p>
+            <div>
+              <a class="btn-notes" href="note.php?id=<?= $eleve['id'];?>">Voir les notes</a>
+            </div>
+          </div>
+        </article>
+      <?php } ?>
     </div>
   </section>
 </body>
