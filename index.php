@@ -8,6 +8,26 @@ $data = json_decode(file_get_contents($filepath), true);
 // var_dump($data);
 //var_dump($GLOBALS);
 
+$tabRecherche = [];
+foreach($data as $eleve){
+  foreach($eleve as $infos){
+    array_push($tabRecherche, $infos);
+  }
+}
+
+if(isset($_POST["recherche"])){
+  $tabRecherche = [];
+  $recherche = $_POST["recherche"];
+  print_r($recherche);
+  foreach($tabRecherche as $eleve){
+    if(strpos($eleve["prenom"], $recherche) == True){
+      array_push($tabRecherche, $eleve);
+
+    }
+  }
+}
+
+var_dump($tabRecherche);
 ?>
 
 <!DOCTYPE html>
@@ -25,34 +45,32 @@ $data = json_decode(file_get_contents($filepath), true);
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <!-- <div class="search-container">
-      <form action="" method="">
-        <input type="" name="" />
+    <div class="search-container">
+      <form action="#" method="post">
+        <input type="text" name="recherche" placeholder="Rechercher un élève"/>
         <button>Rechercher</button>
       </form>
-    </div> -->
+    </div>
 
     <div class="team-grid">
-      <?php foreach($data as $eleve): ?>
-        <?php foreach($eleve as $infos): ?>
+      <?php foreach($tabRecherche as $eleve): ?>
           <article class="member-card">
             <div class="member-photo">
-              <img src="assets/images/students/<?=$infos["image"]?>" alt="Photo de <?=$infos["prenom"].' '.$infos["nom"] ?>">
+              <img src="assets/images/students/<?=$eleve["image"]?>" alt="Photo de <?=$eleve["prenom"].' '.$eleve["nom"] ?>">
             </div>
             <div class="member-info">
-              <h3><?=$infos["prenom"].' '.$infos["nom"] ?></h3>
-              <div class="member-role"><?= $infos["classe"] ?></div>
+              <h3><?=$eleve["prenom"].' '.$eleve["nom"] ?></h3>
+              <div class="member-role"><?= $eleve["classe"] ?></div>
               <p class="member-desc">
-                <?= $infos["evaluation_globale"] ?>
+                <?= $eleve["evaluation_globale"] ?>
               </p>
-              <a href="note.php?id=<?= $infos["id"] ?>">
+              <a href="note.php?id=<?= $eleve["id"] ?>">
                 <div>
                   <button class="btn-notes">Voir les notes</button>
                 </div>
               </a>
             </div>
           </article>
-        <?php endforeach; ?>
       <?php endforeach; ?>
     </div>
   </section>
