@@ -5,7 +5,7 @@ $filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
 
 ////Pour débugger :
-//var_dump($data);
+// var_dump($data);
 //var_dump($GLOBALS);
 
 ?>
@@ -33,21 +33,24 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
 
     <div class="team-grid">
+    <?php $data = $data['eleves'];
+    foreach ($data as $eleves) { ?>
       <article class="member-card">
         <div class="member-photo">
-          <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
+          <img src="<?= $eleves['image'] ?>" alt="Photo de <?= $eleves['prenom'].''.$eleves['nom'] ?>">
         </div>
         <div class="member-info">
-          <h3><?= "John D." ?></h3>
-          <div class="member-role"><?= "B1" ?></div>
+          <h3><?= $eleves['prenom'].''.$eleves['nom']; ?></h3>
+          <div class="member-role"><?= $eleves['classe']; ?></div>
           <p class="member-desc">
-            <?= "Appréciation globale" ?>
+            <?= $eleves['evaluation_globale']; ?>
           </p>
           <div>
             <button class="btn-notes">Voir les notes</button>
           </div>
         </div>
       </article>
+<?php } ?>
     </div>
   </section>
 </body>
