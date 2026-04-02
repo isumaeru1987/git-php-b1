@@ -129,41 +129,44 @@ Final boss
 
 ---
 
-# 🧮 Grille de notation (/20)
+# 🧮 Grille de notation (18.5/20)
 
-## 🔹 Git & méthode (/6)
+## 🔹 Git & méthode (6/6)
 
 | Critère | Points |
 |--------|--------|
-| Branche créée correctement | 1 |
-| Commits présents et bien nommés | 3 |
-| Push sur dépôt distant | 1 |
-| Respect des étapes demandées | 1 |
+| Branche créée correctement | 1/1 |
+| Commits présents et bien nommés | 3/3 |
+| Push sur dépôt distant | 1/1 |
+| Respect des étapes demandées | 1/1 |
 
 ---
 
-## 🔹 index.php (/4)
+## 🔹 index.php (3.5/4)
 
 | Critère | Points |
 |--------|--------|
-| Chargement JSON | 0.5 |
-| Boucle des élèves | 1.5 |
-| Suppression des valeurs en dur | 1.5 |
-| Lien vers note.php | 0.5 |
+| Chargement JSON | 0/0.5 |
+==> attention au "/" dans le path
+| Boucle des élèves | 1.5/1.5 |
+| Suppression des valeurs en dur | 1/1.5 |
+==> L'ordre prénom nom est inversé, il fallait également n'afficher que la première lettre du nom de famille
+| Lien vers note.php | 0.5/0.5 |
 
 ---
 
-## 🔹 note.php (/10)
+## 🔹 note.php (9/10)
 
 | Critère | Points |
 |--------|--------|
-| Correction des erreurs PHP | 1 |
-| Récupération ID URL | 0.5 |
-| Affichage infos élève | 1 |
-| Nb matières + nb notes | 1.5 |
-| Boucle matières + notes | 2 |
-| Moyennes (matière + générale) | 4 |
-
+| Correction des erreurs PHP | 0.5/1 |
+==> attention au "/" dans le path
+| Récupération ID URL | 0.5/0.5 |
+| Affichage infos élève | 1/1 |
+| Nb matières + nb notes | 1.5/1.5 |
+| Boucle matières + notes | 2/2 |
+| Moyennes (matière + générale) | 3.5/4 |
+==> arrondi manquant
 ---
 
 ## 🎁 BONUS

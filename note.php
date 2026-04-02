@@ -1,7 +1,7 @@
 <?php
 
 //Récupération du fichier JSON et conversion en tableau PHP
-$filepath = 'data\students.json';
+$filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
 
 ////Pour débugger :
