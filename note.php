@@ -16,6 +16,7 @@ $eleve = array_filter($data['eleves'], function($student){
 ////Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
 
+$moyenne_generale = 0;
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +62,7 @@ $eleve = array_filter($data['eleves'], function($student){
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?php echo $moyenne_generale?></div>
           </div>
         </div>
       </div>
@@ -80,17 +81,20 @@ $eleve = array_filter($data['eleves'], function($student){
             </tr>
           </thead>
           <tbody id="notes-body">
-            <?php foreach($eleve[array_key_first($eleve)]['notes'] as $notes){ ?>
+            <?php foreach($eleve[array_key_first($eleve)]['notes'] as $notes){ 
+              $moyenne_matiere = 0?>
               <tr>
                 <td><strong><?php echo "Matiere"?></strong></td>
                 <td>
                 <div class="notes-list">
                   <?php for($i=0;$i<count($notes);$i++){?>
-                    <span class="note-badge"><?php echo $notes[$i]?></span>
+                    <span class="note-badge"><?php echo $notes[$i]?>/20</span>
+                    <?php $moyenne_matiere += $notes[$i] ?>
                   <?php }?>
                 </div>
                 </td>
-                <td class="moyenne-cell">15,00/20</td>
+                <td class="moyenne-cell"><?php echo $moyenne_matiere/count($notes)?>/20</td>
+                <?php $moyenne_generale += $moyenne_matiere/count($notes)?>
               </tr>
             <?php }?>
           </tbody>
@@ -100,7 +104,7 @@ $eleve = array_filter($data['eleves'], function($student){
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?php echo round($moyenne_generale/count($eleve[array_key_first($eleve)]['notes']),2)?>/20</div>
         </div>
       </div>
     </section>
