@@ -3,7 +3,7 @@
 //Récupération du fichier JSON et conversion en tableau PHP
 $filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
-
+var_dump($data);
 ////Pour débugger :
 //var_dump($data);
 //var_dump($GLOBALS);
@@ -33,7 +33,8 @@ $data = json_decode(file_get_contents($filepath), true);
     </div> -->
     
     <div class="team-grid">
-      <?php foreach ($data as $students => $student): ?>
+      <?php foreach ($data as $eleves): ?>
+      <?php foreach ($eleves as $eleve => $value): ?>
       <article class="member-card">
         <div class="member-photo">
           <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
@@ -49,6 +50,7 @@ $data = json_decode(file_get_contents($filepath), true);
           </div>
         </div>
       </article>
+      <?php endforeach; ?>
       <?php endforeach; ?>
     </div>
   </section>
