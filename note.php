@@ -64,7 +64,7 @@ foreach($eleve[$firstKey]["notes"] as $note){
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?php echo round($somme_note/$nb_note, 2) ?></div>
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@ foreach($eleve[$firstKey]["notes"] as $note){
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom"><?php echo $somme_note/$nb_note ?></div>
+          <div class="value" id="moyenne-generale-bottom"><?php echo round($somme_note/$nb_note, 2) ?></div>
         </div>
       </div>
     </section>

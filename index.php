@@ -27,7 +27,7 @@ if(isset($_POST["recherche"])){
   }
 }
 
-var_dump($tabRecherche);
+// var_dump($tabRecherche);
 ?>
 
 <!DOCTYPE html>
@@ -56,10 +56,10 @@ var_dump($tabRecherche);
       <?php foreach($tabRecherche as $eleve): ?>
           <article class="member-card">
             <div class="member-photo">
-              <img src="assets/images/students/<?=$eleve["image"]?>" alt="Photo de <?=$eleve["prenom"].' '.$eleve["nom"] ?>">
+              <img src="assets/images/students/<?=$eleve["image"]?>" alt="Photo de <?=$eleve["prenom"].' '.$eleve["nom"][0] ?>.">
             </div>
             <div class="member-info">
-              <h3><?=$eleve["prenom"].' '.$eleve["nom"] ?></h3>
+              <h3><?=$eleve["prenom"].' '.$eleve["nom"][0] ?>.</h3>
               <div class="member-role"><?= $eleve["classe"] ?></div>
               <p class="member-desc">
                 <?= $eleve["evaluation_globale"] ?>
