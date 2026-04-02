@@ -10,11 +10,11 @@ $data = json_decode(file_get_contents($filepath), true);
 
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
-    return $student['id'] == 1;
+    return $student['id'] == $_GET['id'];
 });
-
+$infoEleve = reset($eleve);
 ////Pour débugger :
-//var_dump($eleve); //Affiche le tableau de l'élève
+// var_dump($eleve); //Affiche le tableau de l'élève
 
 ?>
 
@@ -33,12 +33,12 @@ $eleve = array_filter($data['eleves'], function($student){
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="" alt="Photo de John Doe">
+        <img src="assets/images/students/<?= htmlspecialchars($infoEleve['image']) ?>" alt="Photo de John Doe">
       </div>
 
       <div class="student-info">
-        <h1>John Doe</h1>
-        <div class="student-class">B1</div>
+        <h1><?= htmlspecialchars($infoEleve['prenom'])." ".htmlspecialchars($infoEleve['nom']) ?></h1>
+        <div class="student-class"><?= htmlspecialchars($infoEleve['classe']) ?></div>
 
         <div class="student-summary">
           <div class="summary-box">
