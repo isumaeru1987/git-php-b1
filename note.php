@@ -1,7 +1,6 @@
 <?php
-
 //Récupération du fichier JSON et conversion en tableau PHP
-$data = json_decode(file_get_contents($filepath), true);
+$data = json_decode(file_get_contents('data/students.json'), true);
 
 ////Pour débugger :
 //var_dump($data); //Affiche le tableau des eleves
