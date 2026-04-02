@@ -129,6 +129,7 @@ body {
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 6px 15px rgba(201, 107, 107, 0.3);
+  text-decoration: none;
 }
 
 .btn-notes:hover {
