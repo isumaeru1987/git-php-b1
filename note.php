@@ -94,7 +94,7 @@ $moyenneGenerale = $totalNotesCount > 0 ? $sommeToutesNotes / $totalNotesCount :
                         </div>
                     </td>
                     <td class="moyenne-cell">
-                        <?= ?>/20
+                        <?= $moyenneMatiere ?>/20
                     </td>
                 </tr>
             <?php } ?>
