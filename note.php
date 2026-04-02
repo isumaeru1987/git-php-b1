@@ -23,7 +23,6 @@ foreach($eleve[array_key_first($eleve)]['notes'] as $notes){
     $moyenne += $note;
   };
 };
-echo $moyenne;
 
 ?>
 
@@ -89,7 +88,6 @@ echo $moyenne;
             </tr>
           </thead>
           <tbody id="notes-body">
-            <?php $moyenne_generale = 0;?>
             <?php foreach($eleve[array_key_first($eleve)]['notes'] as $notes){ 
               $moyenne_matiere = 0?>
               <tr>
@@ -103,7 +101,6 @@ echo $moyenne;
                 </div>
                 </td>
                 <td class="moyenne-cell"><?php echo $moyenne_matiere/count($notes)?>/20</td>
-                <?php $moyenne_generale += $moyenne_matiere/count($notes)?>
               </tr>
             <?php }?>
           </tbody>
@@ -113,7 +110,7 @@ echo $moyenne;
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom"><?php echo round($moyenne_generale/count($eleve[array_key_first($eleve)]['notes']),2)?>/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?php echo round($moyenne/$number_notes,2)?>/20</div>
         </div>
       </div>
     </section>
