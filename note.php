@@ -19,6 +19,18 @@ $eleve = array_filter($data['eleves'], function($student){
 
 $test = current($eleve);
 
+$notes_eleve = $test['notes'] ?? [];
+$nb_matieres = count($notes_eleve);
+$total_notes_count = 0;
+$somme_toutes_notes = 0;
+
+foreach ($notes_eleve as $matiere => $liste_notes) {
+  $total_notes_count += count($liste_notes); 
+  $somme_toutes_notes += array_sum($liste_notes);
+}
+
+$moyenne_generale = ($total_notes_count > 0) ? $somme_toutes_notes / $total_notes_count : 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -46,17 +58,17 @@ $test = current($eleve);
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?= $nb_matieres; ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?= $total_notes_count; ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?= number_format($moyenne_generale, 2, ',', ' '); ?></div>
           </div>
         </div>
       </div>
