@@ -10,13 +10,14 @@ $data = json_decode(file_get_contents($filepath), true);
 
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
-    return $student['id'] == 1;
+    return $student['id'] == $_GET['id'];
 });
 
 ////Pour débugger :
-//var_dump($eleve); //Affiche le tableau de l'élève
+// var_dump($eleve); //Affiche le tableau de l'élève
 
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,7 +27,7 @@ $eleve = array_filter($data['eleves'], function($student){
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= "John Doe" ?></title>
+  <title><?= "John D." ?></title>
 </head>
 <body>
   <div class="page">
