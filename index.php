@@ -12,6 +12,11 @@ function clean($value) : string {
   return htmlspecialchars(trim($value));
 }
 
+$isSearch = isset($_GET["search"]);
+if ($isSearch) {
+  $search = clean($_GET["search"]);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,15 +34,17 @@ function clean($value) : string {
   <section class="team-section">
     <h1 class="team-title">Etudiants</h1>
 
-    <!-- <div class="search-container">
+    <div class="search-container">
       <form action="" method="">
-        <input type="" name="" />
+        <input type="text" name="search"/>
         <button>Rechercher</button>
       </form>
-    </div> -->
+      <?php if ($isSearch) : ?> <h2>Trouvé pour "<b><?=$search?></b>"</h2> <?php endif;?>
+    </div>
 
     <div class="team-grid">
       <?php foreach ($data["eleves"] as $eleve) {
+        if ($isSearch && strpos($eleve["prenom"],$search) === FALSE) {continue;}
         $calling = clean($eleve["prenom"]) . " " . strtoupper(clean($eleve["nom"][0])) .".";
         ?>
         <article class="member-card">
