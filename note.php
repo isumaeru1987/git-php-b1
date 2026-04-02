@@ -1,5 +1,5 @@
 <?php
-
+include 'index.php';
 //Récupération du fichier JSON et conversion en tableau PHP
 $data = json_decode(file_get_contents($filepath), true);
 
@@ -9,7 +9,7 @@ $data = json_decode(file_get_contents($filepath), true);
 
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
-    return $student['id'] == 1;
+    return $student['id'] == $_GET["id"];
 });
 
 ////Pour débugger :
