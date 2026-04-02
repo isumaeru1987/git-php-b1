@@ -11,11 +11,12 @@ $eleve = array_filter($data['eleves'], function ($student) {
   //Remplacer 1 par la valeur passée dans l'URL
   return $student['id'] == $_GET["id"];
 });
-$eleve = $eleve[0]
-  ////Pour débugger :
 // var_dump($eleve); //Affiche le tableau de l'élève
-
-  ?>
+foreach ($eleve as $value) {
+  $eleve = $value;
+}
+////Pour débugger :
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,14 +30,14 @@ $eleve = $eleve[0]
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
   <link href="assets/css/note.css" rel="stylesheet" />
-  <title><?= "John Doe" ?></title>
+  <title><?= $eleve["nom"] . "." . $eleve["prenom"] ?></title>
 </head>
 
 <body>
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="assets/images/students/<?= $eleve["image"]?>" alt="Photo de John Doe">
+        <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de John Doe">
       </div>
 
       <div class="student-info">
@@ -56,7 +57,7 @@ $eleve = $eleve[0]
                   <?php $nbNote = 0;
                   foreach ($eleve["notes"] as $value) {
                     $nbNote += count($value);
-                  } 
+                  }
                   echo $nbNote;
                   ?>
                 </div>
@@ -69,8 +70,8 @@ $eleve = $eleve[0]
                     foreach ($value as $note) {
                       $moyenne += $note;
                     }
-                  } 
-                  echo round($moyenne/$nbNote,2);
+                  }
+                  echo $moyenne = round($moyenne / $nbNote, 2);
                   ?>
                 </div>
               </div>
@@ -91,16 +92,34 @@ $eleve = $eleve[0]
             </tr>
           </thead>
           <tbody id="notes-body">
-            <tr>
-              <td><strong>Maths</strong></td>
-              <td>
-                <div class="notes-list">
-                  <span class="note-badge">14/20</span>
-                  <span class="note-badge">16/20</span>
-                </div>
-              </td>
-              <td class="moyenne-cell">15,00/20</td>
-            </tr>
+            <?php $moyenneG = 0;
+            $nbMoyenne = 0;
+            foreach ($eleve["notes"] as $key => $value) { ?>
+              <?php $moyenne = 0;
+
+              $nbNote = 0;
+              ?>
+              <tr>
+                <td><strong><?= $key ?></strong></td>
+                <td>
+                  <div class="notes-list">
+                    <?php foreach ($value as $note) { ?>
+                      <span class="note-badge"><?= $note ?>/20</span>
+                      <?php $moyenne += $note;
+
+                      $nbNote++;
+                      ?>
+                    <?php }
+                    $nbMoyenne++ ?>
+                  </div>
+                </td>
+                <td class="moyenne-cell">
+                  <?php $moyenneG += round($moyenne / $nbNote, 2);
+                  echo round($moyenne / $nbNote, 2) ?>/20</td>
+              </tr>
+
+            <?php } ?>
+            ?>
           </tbody>
         </table>
       </div>
@@ -108,7 +127,7 @@ $eleve = $eleve[0]
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?= round($moyenneG / $nbMoyenne, 2) ?>/20</div>
         </div>
       </div>
     </section>
