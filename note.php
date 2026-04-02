@@ -11,10 +11,14 @@ $data = json_decode(file_get_contents($filepath), true);
 $eleve = array_filter($data['eleves'], function($student){
     //Remplacer 1 par la valeur passée dans l'URL
     return $student['id'] == $_GET["id"];
-});
+})[0];
 
 ////Pour débugger :
 //var_dump($eleve); //Affiche le tableau de l'élève
+
+function clean($value) : string {
+  return htmlspecialchars(trim($value));
+}
 
 ?>
 
@@ -33,27 +37,40 @@ $eleve = array_filter($data['eleves'], function($student){
   <div class="page">
     <section class="student-card">
       <div class="student-photo">
-        <img src="" alt="Photo de John Doe">
+        <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?=clean($calling)?>">
       </div>
 
       <div class="student-info">
-        <h1>John Doe</h1>
-        <div class="student-class">B1</div>
+        <h1><?=clean($eleve["prenom"]) . " " . clean($eleve["nom"]);?></h1>
+        <div class="student-class"><?=clean($eleve["classe"])?></div>
 
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?=count($eleve["notes"])?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?php
+              $nbNotes = 0;
+              foreach($eleve["notes"] as $matiere) {
+                $nbNotes += count($matiere);
+              }
+              echo $nbNotes;
+            ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top">15,00</div>
+            <div class="summary-value" id="moyenne-generale-top"><?php
+              $moyenneTotale = 0;
+              foreach($eleve["notes"] as $matiere) {
+                $tot = array_reduce($matiere,fn($note,$before) => $before+=$note);
+                $moyenneTotale += $tot / count($matiere);
+              }
+              echo round($moyenneTotale / count($eleve["notes"]),2);
+            ?></div>
           </div>
         </div>
       </div>
