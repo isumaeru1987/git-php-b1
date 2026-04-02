@@ -43,12 +43,20 @@ $eleve = array_filter($data['eleves'], function($student){
         <div class="student-summary">
           <div class="summary-box">
             <div class="summary-label">Nombre de matières</div>
-            <div class="summary-value" id="nb-matieres">0</div>
+            <div class="summary-value" id="nb-matieres"><?php echo count($eleve[array_key_first($eleve)]["notes"]) ?></div>
           </div>
 
           <div class="summary-box">
             <div class="summary-label">Nombre total de notes</div>
-            <div class="summary-value" id="nb-notes">0</div>
+            <div class="summary-value" id="nb-notes"><?php
+            $number_notes = 0;
+            foreach($eleve[array_key_first($eleve)]["notes"] as $matiere){
+              foreach($matiere as $note){
+                $number_notes++;
+              }
+            }
+            echo $number_notes;
+            ?></div>
           </div>
 
           <div class="summary-box">
