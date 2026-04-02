@@ -31,8 +31,9 @@ $data = json_decode(file_get_contents($filepath), true);
         <button>Rechercher</button>
       </form>
     </div> -->
-
+    
     <div class="team-grid">
+      <?php foreach ($data as $students => $student): ?>
       <article class="member-card">
         <div class="member-photo">
           <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
@@ -48,6 +49,7 @@ $data = json_decode(file_get_contents($filepath), true);
           </div>
         </div>
       </article>
+      <?php endforeach; ?>
     </div>
   </section>
 </body>
