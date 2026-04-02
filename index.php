@@ -3,7 +3,6 @@
 //Récupération du fichier JSON et conversion en tableau PHP
 $filepath = 'data/students.json';
 $data = json_decode(file_get_contents($filepath), true);
-var_dump($data);
 ////Pour débugger :
 //var_dump($data);
 //var_dump($GLOBALS);
@@ -33,17 +32,17 @@ var_dump($data);
     </div> -->
     
     <div class="team-grid">
-      <?php foreach ($data as $eleves): ?>
-      <?php foreach ($eleves as $eleve => $value): ?>
+      <?php foreach ($data as $liste): ?>
+      <?php foreach ($liste as $eleves => $eleve): ?>
       <article class="member-card">
         <div class="member-photo">
-          <img src="<chemin de la photo>" alt="Photo de <?= "John D." ?>">
+          <img src="assets/images/students/<?= htmlspecialchars($eleve['image'])?>" alt="Photo de <?= htmlspecialchars($eleve['name'])?>">
         </div>
         <div class="member-info">
-          <h3><?= "John D." ?></h3>
-          <div class="member-role"><?= "B1" ?></div>
+          <h3><?= htmlspecialchars($eleve['prenom']) ?> <?= substr(htmlspecialchars($eleve['nom']), 0, 1) ?>.</h3>
+          <div class="member-role"><?= htmlspecialchars($eleve['classe'])?></div>
           <p class="member-desc">
-            <?= "Appréciation globale" ?>
+            <?= htmlspecialchars($eleve['evaluation_globale'])?>
           </p>
           <div>
             <button class="btn-notes">Voir les notes</button>
