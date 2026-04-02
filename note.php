@@ -80,16 +80,19 @@ $eleve = array_filter($data['eleves'], function($student){
             </tr>
           </thead>
           <tbody id="notes-body">
-            <tr>
-                <td><strong>Maths</strong></td>
+            <?php foreach($eleve[array_key_first($eleve)]['notes'] as $notes){ ?>
+              <tr>
+                <td><strong><?php echo "Matiere"?></strong></td>
                 <td>
                 <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
+                  <?php for($i=0;$i<count($notes);$i++){?>
+                    <span class="note-badge"><?php echo $notes[$i]?></span>
+                  <?php }?>
                 </div>
                 </td>
                 <td class="moyenne-cell">15,00/20</td>
-            </tr>
+              </tr>
+            <?php }?>
           </tbody>
         </table>
       </div>
