@@ -80,14 +80,14 @@ foreach($eleve[$firstKey]["notes"] as $note){
             </tr>
           </thead>
           <tbody id="notes-body">
-            <?php foreach($eleve[$firstKey]["notes"] as $note): ?>
-              <?php var_dump($note) ?>
+            <?php foreach($eleve[$firstKey]["notes"] as $key => $note): ?>
               <tr>
-                  <td><strong><?= key($note) ?></strong></td>
+                  <td><strong><?= $key ?></strong></td>
                   <td>
                   <div class="notes-list">
-                      <span class="note-badge">14/20</span>
-                      <span class="note-badge">16/20</span>
+                    <?php foreach($note as $nb): ?>
+                      <span class="note-badge"><?= $nb ?>/20</span>
+                    <?php endforeach; ?>
                   </div>
                   </td>
                   <td class="moyenne-cell">15,00/20</td>
