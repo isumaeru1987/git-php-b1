@@ -63,7 +63,7 @@ $moyenneGenerale = $totalNotesCount > 0 ? $sommeToutesNotes / $totalNotesCount :
 
           <div class="summary-box">
             <div class="summary-label">Moyenne générale</div>
-            <div class="summary-value" id="moyenne-generale-top"><?= htmlspecialchars($moyenneGenerale) ?></div>
+            <div class="summary-value" id="moyenne-generale-top"><?= round(htmlspecialchars($moyenneGenerale),2 )?></div>
           </div>
         </div>
       </div>
@@ -82,24 +82,30 @@ $moyenneGenerale = $totalNotesCount > 0 ? $sommeToutesNotes / $totalNotesCount :
             </tr>
           </thead>
           <tbody id="notes-body">
-            <tr>
-                <td><strong>Maths</strong></td>
-                <td>
-                <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
-                </div>
-                </td>
-                <td class="moyenne-cell">15,00/20</td>
-            </tr>
-          </tbody>
+            <?php foreach ($infoEleve['notes'] as $matiere => $listeNotes) { ?>
+                <?php $moyenneMatiere = array_sum($listeNotes) / count($listeNotes); ?>
+                <tr>
+                    <td><strong><?= ucfirst(htmlspecialchars($matiere)) ?></strong></td>
+                    <td>
+                        <div class="notes-list">
+                            <?php foreach ($listeNotes as $note) { ?>
+                                <span class="note-badge"><?= $note ?>/20</span>
+                            <?php } ?>
+                        </div>
+                    </td>
+                    <td class="moyenne-cell">
+                        <?= ?>/20
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
         </table>
       </div>
 
       <div class="footer-average">
         <div class="general-average-box">
           <div class="label">Moyenne générale</div>
-          <div class="value" id="moyenne-generale-bottom">15,00/20</div>
+          <div class="value" id="moyenne-generale-bottom"><?= round(htmlspecialchars($moyenneGenerale),2 )?>/20</div>
         </div>
       </div>
     </section>
