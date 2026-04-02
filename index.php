@@ -12,6 +12,10 @@ function clean($value) : string {
   return htmlspecialchars(trim($value));
 }
 
+function getDisplayName(string $firstName, string $lastName) : string{
+  return clean($firstName) . " " . strtoupper(clean($lastName[0])) .".";
+}
+
 $isSearch = isset($_GET["search"]) && clean($_GET["search"]) != "";
 if ($isSearch) {
   $search = clean($_GET["search"]);
@@ -45,14 +49,13 @@ if ($isSearch) {
     <div class="team-grid">
       <?php foreach ($data["eleves"] as $eleve) {
         if ($isSearch && strpos($eleve["prenom"],$search) === FALSE) {continue;}
-        $calling = clean($eleve["prenom"]) . " " . strtoupper(clean($eleve["nom"][0])) .".";
         ?>
         <article class="member-card">
           <div class="member-photo">
-            <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?=clean($calling)?>">
+            <img src="assets/images/students/<?= $eleve["image"] ?>" alt="Photo de <?= getDisplayName($eleve['prenom'], $eleve['nom']) ?>">
           </div>
           <div class="member-info">
-            <h3><?=clean($calling)?></h3>
+            <h3><?= getDisplayName($eleve['prenom'], $eleve['nom']) ?></h3>
             <div class="member-role"><?= clean($eleve["classe"]) ?></div>
             <p class="member-desc">
               <?=clean($eleve["evaluation_globale"])?>
