@@ -45,7 +45,9 @@ $data = json_decode(file_get_contents($filepath), true);
               <?= $students['evaluation_globale'] ?>
             </p>
             <div>
-              <button class="btn-notes">Voir les notes</button>
+              <a href="note.php?id=<?php echo $students['id']?>">
+                <button class="btn-notes">Voir les notes</button>
+              </a>
             </div>
           </div>
         </article>
