@@ -55,6 +55,22 @@
         "anglais": [17, 18, 16]
       },
       "evaluation_globale": "Excellent trimestre, en nette progression, félicitations !"
+    },
+    {
+      "id": 4875555,
+      "nom": "PHILIPPO",
+      "prenom": "Eddy",
+      "classe": "CM1",
+      "image": "1932011.jpg",
+      "notes": {
+        "aquagym": [20, 18, 19],
+        "pls": [9, 17, 14],
+        "cocktails à base de fond de bouteilles d'alcool": [21, 19.5, 20],
+        "raclette": [20, 18, 12],
+        "magie": [20, 20, 18],
+        "pole dance": [22, 24, 18]
+      },
+      "evaluation_globale": "Trimestre assez satisfaisant, bon résulatats en cocktails, et excellent en Pole dance ! Mais attention, moins bon en PLS, il faut d'avantage réviser chez soi pour remonter sa moyenne et savoir se mettre en pls en moins de 2.6587456 secondes. Continue tes efforts. Félicitation."
     }
   ]
 }
