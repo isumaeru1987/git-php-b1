@@ -30,8 +30,8 @@ $eleve = array_filter($data['eleves'], function($student){
   <title><?= htmlspecialchars($eleve['prenom']) . ' ' . htmlspecialchars($eleve['nom']) ?></title>
 </head>
 <body>
-  <?php foreach ($eleve as $infos): ?>
   <div class="page">
+    <?php foreach ($eleve as $infos): ?>
     <section class="student-card">
       <div class="student-photo">
         <img src="assets/images/students/<?= htmlspecialchars($infos['image'])?>" alt="Photo de <?= htmlspecialchars($infos['prenom']) . ' ' . htmlspecialchars($infos['nom']) ?>">
@@ -59,6 +59,7 @@ $eleve = array_filter($data['eleves'], function($student){
         </div>
       </div>
     </section>
+    <?php endforeach ?>
 
     <section class="details-card">
       <h2 class="details-title">Détail des notes</h2>
@@ -73,16 +74,21 @@ $eleve = array_filter($data['eleves'], function($student){
             </tr>
           </thead>
           <tbody id="notes-body">
+          <?php foreach ($eleve as $infos): ?>
+          <?php foreach ($infos['notes'] as $matieres => $notes): ?>
             <tr>
-                <td><strong>Maths</strong></td>
+                <td><strong><?= htmlspecialchars(ucfirst($matieres)) ?></strong></td>
                 <td>
                 <div class="notes-list">
-                    <span class="note-badge">14/20</span>
-                    <span class="note-badge">16/20</span>
+                    <?php foreach ($notes as $note): ?>
+                    <span class="note-badge"><?= htmlspecialchars($note) ?>/20</span>
+                    <? endforeach ?>
                 </div>
                 </td>
                 <td class="moyenne-cell">15,00/20</td>
             </tr>
+          <? endforeach ?>
+          <? endforeach ?>
           </tbody>
         </table>
       </div>
@@ -95,6 +101,5 @@ $eleve = array_filter($data['eleves'], function($student){
       </div>
     </section>
   </div>
-  <?php endforeach ?>
 </body>
 </html>
