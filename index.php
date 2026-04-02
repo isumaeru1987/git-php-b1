@@ -12,7 +12,7 @@ function clean($value) : string {
   return htmlspecialchars(trim($value));
 }
 
-$isSearch = isset($_GET["search"]);
+$isSearch = isset($_GET["search"]) && clean($_GET["search"]) != "";
 if ($isSearch) {
   $search = clean($_GET["search"]);
 }
@@ -36,7 +36,7 @@ if ($isSearch) {
 
     <div class="search-container">
       <form action="" method="">
-        <input type="text" name="search" value="<?=$search?>"/>
+        <input type="text" name="search" value="<?=$search??""?>"/>
         <button>Rechercher</button>
       </form>
       <?php if ($isSearch) : ?> <h2>Trouvé pour "<b><?=$search?></b>"</h2> <?php endif;?>
